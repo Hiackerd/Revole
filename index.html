@@ -199,6 +199,17 @@
             object-fit: contain;
         }
         
+        .product-card.highlight {
+            animation: highlightProduct 2s ease;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+        
+        @keyframes highlightProduct {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(233, 69, 96, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 69, 96, 0); }
+        }
+        
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -1221,6 +1232,7 @@
 
         // Warenkorb
         let cartCount = 0;
+        let productElements = {}; // Speichert Referenzen zu den Produkt-Elementen
 
         // Initialisierung
         document.addEventListener('DOMContentLoaded', function() {
@@ -1246,6 +1258,7 @@
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     productCard.setAttribute('data-category', category);
+                    productCard.setAttribute('data-product', product.name);
                     productCard.style.animationDelay = `${index * 0.1}s`;
                     
                     productCard.innerHTML = `
@@ -1263,6 +1276,9 @@
                     `;
                     
                     productGrids[category].appendChild(productCard);
+                    
+                    // Speichere Referenz zum Produkt-Element
+                    productElements[product.name] = productCard;
                 });
             }
             
@@ -1441,12 +1457,8 @@
                             }
                         });
                         
-                        // Scrolle zur entsprechenden Sektion
-                        const targetSection = document.getElementById(targetCategory);
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
+                        // Scrolle zum spezifischen Produkt
+                        scrollToProduct(product.name);
                     });
                     
                     searchResults.appendChild(resultItem);
@@ -1459,6 +1471,37 @@
                 noResults.textContent = 'Keine Produkte gefunden';
                 searchResults.appendChild(noResults);
                 searchResults.classList.add('active');
+            }
+        }
+
+        // Zum spezifischen Produkt scrollen
+        function scrollToProduct(productName) {
+            const productElement = productElements[productName];
+            
+            if (productElement) {
+                // Entferne vorherige Highlights
+                document.querySelectorAll('.product-card.highlight').forEach(card => {
+                    card.classList.remove('highlight');
+                });
+                
+                // Scrolle zum Produkt
+                const productRect = productElement.getBoundingClientRect();
+                const absoluteProductTop = productRect.top + window.pageYOffset;
+                
+                window.scrollTo({
+                    top: absoluteProductTop - 150,
+                    behavior: 'smooth'
+                });
+                
+                // Highlight das Produkt
+                setTimeout(() => {
+                    productElement.classList.add('highlight');
+                }, 800);
+                
+                // Entferne Highlight nach der Animation
+                setTimeout(() => {
+                    productElement.classList.remove('highlight');
+                }, 2800);
             }
         }
 
