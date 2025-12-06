@@ -1168,7 +1168,7 @@
         // GitHub Raw Content URL
         const GITHUB_BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${IMAGE_FOLDER}/`;
 
-        // Produktdaten mit korrekten GitHub URLs und erhöhten Preisen
+        // Produktdaten mit allen neuen Produkten
         const products = {
             getraenke: [
                 { name: "Coca Cola", price: "€2,29", image: GITHUB_BASE_URL + "Cola.png", badge: "Bestseller" },
@@ -1184,7 +1184,16 @@
                 { name: "Paulaner 0,33L", price: "€2,99", image: GITHUB_BASE_URL + "Paulaner0_33.png" },
                 { name: "Paulaner 0,33L Zero", price: "€2,99", image: GITHUB_BASE_URL + "Paulaner0_33Zero.png" },
                 { name: "Paulaner 0,5L", price: "€3,49", image: GITHUB_BASE_URL + "Paulaner0_5png.jpeg" },
-                { name: "Monster Energy", price: "€2,79", image: GITHUB_BASE_URL + "Monster.png" }
+                { name: "Monster Energy", price: "€2,79", image: GITHUB_BASE_URL + "Monster.png" },
+                { name: "Booster", price: "€2,00", image: GITHUB_BASE_URL + "Booster.png", badge: "Neu" },
+                { name: "Red Bull Fuji Apfel", price: "€2,00", image: GITHUB_BASE_URL + "RedBullFujiApfel.png" },
+                { name: "Red Bull Kaktus Frucht", price: "€2,00", image: GITHUB_BASE_URL + "RedBullKaktusFrucht.png" },
+                { name: "Red Bull Wassermelone", price: "€2,00", image: GITHUB_BASE_URL + "RedBullWassermelone.png" },
+                { name: "Red Bull Blue", price: "€2,00", image: GITHUB_BASE_URL + "RedBullBlue.png" },
+                { name: "Red Bull Aprikose Erdbeere", price: "€2,00", image: GITHUB_BASE_URL + "RedBullAprikoseErdbeere.png" },
+                { name: "Red Bull Zero", price: "€2,00", image: GITHUB_BASE_URL + "RedBullZero.png" },
+                { name: "Red Bull Yellow", price: "€2,00", image: GITHUB_BASE_URL + "RedBullYellow.png" },
+                { name: "Red Bull Coconut", price: "€2,00", image: GITHUB_BASE_URL + "RedBullCoconut.png", badge: "Exotisch" }
             ],
             suessigkeiten: [
                 { name: "Milka Alpenmilch", price: "€1,99", image: GITHUB_BASE_URL + "Milka.png" },
@@ -1199,7 +1208,8 @@
                 { name: "Haribo", price: "€1,79", image: GITHUB_BASE_URL + "Haribo.png" },
                 { name: "Haribo Pico Balla", price: "€1,89", image: GITHUB_BASE_URL + "HariboPicoBalla.png" },
                 { name: "Joghurt mit der Ecke Schoko", price: "€1,49", image: GITHUB_BASE_URL + "JoghurtMitDerEckeSchoko.png" },
-                { name: "Joghurt mit der Ecke Schoko Flakes", price: "€1,59", image: GITHUB_BASE_URL + "JoghurtMitDerEckeSchokoFlakes.png" }
+                { name: "Joghurt mit der Ecke Schoko Flakes", price: "€1,59", image: GITHUB_BASE_URL + "JoghurtMitDerEckeSchokoFlakes.png" },
+                { name: "Nutella Biscuits", price: "€4,00", image: GITHUB_BASE_URL + "Nutellabiscuits.png", badge: "Premium" }
             ],
             chips: [
                 { name: "Pringles Original", price: "€3,49", image: GITHUB_BASE_URL + "PringelsOriginal.png" },
